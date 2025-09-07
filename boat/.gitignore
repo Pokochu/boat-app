@@ -1,0 +1,67 @@
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Logs ###
+*.log
+logs/
+spring.log
+
+### OS-specific ###
+.DS_Store
+Thumbs.db
+
+### Environment / security ###
+.env
+*.env
+application-*.yml
+application-*.properties
+
+### Database ###
+*.db
+*.mv.db
+*.h2.db
+
+### Java ###
+hs_err_pid*
+replay_pid*
+
+### Generated JAR/WAR ###
+*.jar
+*.war
+*.ear
+

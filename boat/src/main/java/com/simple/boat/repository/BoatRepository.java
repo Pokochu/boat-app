@@ -1,4 +1,8 @@
 package com.simple.boat.repository;
 
-public interface BoatRepository {
+import com.simple.boat.model.Boat;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface BoatRepository extends JpaRepository<Boat, Long> {
+
 }
