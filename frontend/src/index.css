@@ -1,0 +1,176 @@
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+input, textarea, button {
+  font-family: inherit;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Page Container for Non-List Pages */
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Horizontally centers content */
+  justify-content: center; /* Vertically centers content */
+  padding: 1rem;
+}
+
+/* Page Container for List Page */
+.list-page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Horizontally centers content */
+  justify-content: flex-start; /* Aligns content to the top */
+  padding: 1rem;
+}
+
+/* Form Styles */
+.form-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem; /* Increased gap for better spacing */
+  background-color: #fff;
+  padding: 2.5rem; /* Increased padding */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-card h2 {
+  margin: 0;
+}
+
+.form-card input, .form-card textarea {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+
+.form-card button {
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.form-card button:hover {
+  background-color: #0056b3;
+}
+
+/* List Page Specific Styles */
+.add-boat-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #28a745;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  transition: background-color 0.2s ease;
+}
+
+.add-boat-link:hover {
+  background-color: #218838;
+}
+
+.boat-list-container {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.boat-list {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.boat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  width: 100%;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.boat-details {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  flex-grow: 1;
+}
+
+.boat-name-link {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.boat-description {
+  color: #555;
+}
+
+.boat-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.edit-button, .delete-button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.edit-button {
+  background-color: #17a2b8;
+}
+
+.edit-button:hover {
+  background-color: #138496;
+}
+
+.delete-button {
+  background-color: #dc3545;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}

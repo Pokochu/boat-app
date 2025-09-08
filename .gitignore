@@ -22,3 +22,25 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# Backend ignores (Gradle, IntelliJ, etc.)
+.gradle/
+build/
+.idea/
+*.iml
+/out/
+
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Frontend ignores
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.vite/
+/frontend/package-lock.json
+/frontend/yarn.lock
+/frontend/pnpm-lock.yaml
+/frontend/coverage/
