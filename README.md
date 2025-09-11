@@ -61,7 +61,7 @@ boat-app/
 ---
 
 ## 🚀 How to Run the Application
-
+Two users are available on the startup of the application that can be used for testing: user (password: password), admin (admin123).
 There are two primary ways to run this application:
 
 ### Option 1: Using Gradle and Vite
