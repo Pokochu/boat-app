@@ -1,102 +1,132 @@
-# Boat Management Application
+# 🚤 BoatApp
 
-## 🚤 Project Summary
-
-This is a simple full-stack application for managing a list of boats. The application is built to demonstrate a basic **CRUD (Create, Read, Update, Delete)** system with user authentication and authorization. It provides a quick and intuitive interface for authenticated users to view, add, modify, and delete boat records.
-
-### Functional Requirements Fulfilled:
-
-* **User Authentication**: Users must log in to access the application. Upon successful login, they are redirected to the boat list overview.
-* **Boat Management**: The application provides a comprehensive interface for managing boat resources, allowing users to perform CRUD operations.
-* **Boat Details**: Each boat has a name and a description, with appropriate validation to ensure data integrity.
-* **CRUD Endpoints**: A secure REST API is implemented to handle all interactions with the boat data.
+BoatApp is a simple full-stack application where users can view and manage boats.  
+It demonstrates authentication/authorization, CRUD operations, and a React frontend integrated with a Spring Boot backend.
 
 ---
 
-## 🛠️ Tech Stack
+## 📖 Project Structure
 
-### Backend
-
-The backend is a **Spring Boot** application built with **Java 21**. It follows a standard layered architecture with a focus on security and RESTful API design.
-
-* **Spring Boot**: The core framework for building the application.
-* **Spring Data JPA**: For data persistence and interaction with the H2 database.
-* **Spring Security**: Handles user authentication and authorization, ensuring only authenticated users can access the boat resources.
-* **Jakarta Validation**: Used for validating boat data (Name and Description).
-* **Springdoc OpenAPI UI**: Provides auto-generated API documentation for the REST endpoints.
-* **JJWT (JSON Web Token)**: Used to implement token-based authentication.
-* **Lombok**: Reduces boilerplate code (e.g., getters, setters, constructors).
-* **H2 Database**: An in-memory database used for development and testing.
-
-### Frontend
-
-The frontend is a modern single-page application built with **React** and **TypeScript**.
-
-* **React**: A popular JavaScript library for building user interfaces.
-* **Vite**: A fast and lightweight build tool for frontend development.
-* **TypeScript**: Adds static typing to JavaScript, improving code quality and developer experience.
-* **Axios**: A promise-based HTTP client for making API requests to the backend.
-* **React Router**: Manages routing and navigation within the application.
-
----
-
-## 📁 Project Structure
-
-The project is a monorepo containing both the frontend and backend.
 ```
 boat-app/
-├── frontend/
-│   ├── ... (Frontend with React + Vite)
-├── src/
-│   └── ... (Java backend source code)
-├── .gitignore
-├── Dockerfile
-├── docker-compose.yml
-├── gradlew
-├── gradlew.bat
-├── pom.xml
-└── README.md
+│── backend/   # Spring Boot (Java 21, Gradle)
+│── frontend/  # React + Vite + TypeScript
+│── docker-compose.yml
+│── README.md
 ```
 
 ---
 
-## 🚀 How to Run the Application
-Two users are available on the startup of the application that can be used for testing: user (password: password), admin (admin123).
-There are two primary ways to run this application:
+## ⚙️ Technologies Used
 
-### Option 1: Using Gradle and Vite
+**Backend (Spring Boot)**
+- Java 21
+- Spring Boot 3
+- Spring Web
+- Spring Security (JWT-based authentication)
+- Spring Data JPA (H2 in-memory database)
+- Lombok
 
-This method involves running the frontend and backend separately.
+**Frontend (React + Vite + TypeScript)**
+- React Router (navigation)
+- Axios (HTTP requests)
+- TailwindCSS (styling)
 
-1.  **Start the Backend (from IntelliJ IDEA):**
-    * Open the project in IntelliJ IDEA.
-    * Navigate to the main application class (e.g., `BoatAppApplication.java`).
-    * Right-click and select **"Run 'BoatAppApplication.main()'"**. The backend will start on `http://localhost:8080`.
+**Other**
+- Docker & Docker Compose
+- IntelliJ IDEA / VS Code (development)
 
-2.  **Start the Frontend (from Command Line):**
-    * Open a terminal and navigate to the `frontend` directory:
-        ```bash
-        cd frontend
-        ```
-    * Install the required dependencies:
-        ```bash
-        npm install
-        ```
-    * Start the development server:
-        ```bash
-        npm run dev
-        ```
-    * The frontend will be available at `http://localhost:5173`.
+---
 
-### Option 2: Using Docker Compose
+## 👤 Hardcoded Users
 
-This is the recommended approach for a production-like environment, as it simplifies running both services with a single command.
+The backend comes with preloaded users in the H2 database:
 
-1.  **Build and Run with Docker Compose:**
-    * Ensure you have Docker and Docker Compose installed.
-    * Open a terminal in the project root directory.
-    * Execute the following command to build the Docker images and start the containers:
-        ```bash
-        docker-compose up --build
-        ```
-    * The application will be accessible at `http://localhost:5173`. The frontend will serve the React app, which will communicate with the backend running in a separate container.
+| Username | Password | Role  |
+|----------|----------|-------|
+| `user`   | `password` | USER |
+| `admin`  | `password` | ADMIN |
+
+⚠️ Passwords are **BCrypt encoded** but stored in plain text here for testing.
+
+---
+
+## 🔑 API Endpoints
+
+### Authentication
+- `POST /api/auth/login` → login with username & password, receive JWT token  
+- `POST /api/auth/register` → register a new user (role: USER by default)
+
+### Boats
+(All require a valid JWT in the `Authorization: Bearer <token>` header)
+
+- `GET /api/boats` → list all boats  
+- `GET /api/boats/{id}` → get boat by id  
+- `POST /api/boats` → create new boat  
+- `PUT /api/boats/{id}` → update boat  
+- `DELETE /api/boats/{id}` → delete boat  
+
+### Swagger Docs
+- `http://localhost:8080/swagger-ui.html`
+
+---
+
+## 🚀 How to Run the Project
+
+### Option 1: Run Separately (Dev Mode)
+
+#### Backend
+1. Open `backend/` in IntelliJ IDEA.  
+2. Run `BoatApplication.java`.  
+3. Backend available at: `http://localhost:8080`.
+
+#### Frontend
+1. Open terminal in `frontend/`.  
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start dev server:
+   ```bash
+   npm run dev
+   ```
+4. Frontend available at: `http://localhost:5173`.
+
+The frontend proxies API requests to `http://localhost:8080/api` (configured in `vite.config.ts`).
+
+---
+
+### Option 2: Run with Docker Compose
+
+1. Ensure Docker is installed & running.
+2. From project root, run:
+   ```bash
+   docker compose up --build
+   ```
+3. Access:
+   - Backend → `http://localhost:8080`
+   - Frontend → `http://localhost:5173`
+
+---
+
+## 🧪 Trying It Out
+
+1. Start the app (see above).  
+2. Login via Postman or curl:
+   ```bash
+   curl -X POST http://localhost:8080/api/auth/login      -H "Content-Type: application/json"      -d '{"username":"user","password":"password"}'
+   ```
+3. Copy the JWT token from the response.  
+4. Use the token to access boats:
+   ```bash
+   curl http://localhost:8080/api/boats      -H "Authorization: Bearer <TOKEN>"
+   ```
+
+---
+
+## ✅ Next Steps
+- Add registration form in frontend.  
+- Deploy to cloud (Heroku, Render, or Vercel + Railway).  
+- Replace H2 with PostgreSQL in Docker.
+
+---
